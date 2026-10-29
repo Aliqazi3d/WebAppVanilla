@@ -1,0 +1,161 @@
+/* ===== Foundations ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Colour tokens live here once, dark mode only swaps the values */
+:root {
+  color-scheme: light dark;
+  --color-bg: #f6f8f4;
+  --color-surface: #ffffff;
+  --color-text: #1b2a1f;
+  --color-muted: #4a5d4f;
+  --color-primary: #1b4332;
+  --color-on-primary: #ffffff;
+  --color-accent: #d4a017;
+  --color-border: #d4ddd2;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --radius: 0.75rem;
+  --shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 0.12);
+  --nav-height: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121812;
+    --color-surface: #1c261e;
+    --color-text: #eef3ee;
+    --color-muted: #b4c4b7;
+    --color-primary: #e6b83a;
+    --color-on-primary: #1b1b1b;
+    --color-border: #2e3d31;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+  /* stops the fixed nav covering the footer */
+  padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
+}
+
+a { color: inherit; }
+
+/* ===== Layout and components (mobile first) ===== */
+.site-header {
+  padding: var(--space-3) var(--space-2);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.site-header h1 { margin: 0; font-size: 1.5rem; }
+.site-header p { margin: var(--space-1) 0 0; }
+
+main { max-width: 70rem; margin-inline: auto; padding: var(--space-2); }
+
+.btn {
+  display: inline-block;
+  min-height: 3rem; /* big touch target */
+  padding: 0.75rem 1.25rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+
+.card-grid { display: flex; flex-direction: column; gap: var(--space-2); }
+.card {
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+.card h2 { margin-top: 0; }
+.emoji { font-size: 3rem; line-height: 1; }
+.badge { border: 1px solid var(--color-border); border-radius: 99px; padding: 0.1rem 0.6rem; font-size: 0.8rem; }
+
+.search { width: 100%; max-width: 22rem; min-height: 3rem; margin: var(--space-1) 0 var(--space-2); padding: 0 var(--space-1); font: inherit; }
+
+#map { height: 60vh; min-height: 20rem; margin-top: var(--space-2); border-radius: var(--radius); }
+
+.toast {
+  position: fixed; left: 50%; bottom: calc(var(--nav-height) + 1rem); z-index: 20;
+  transform: translateX(-50%);
+  padding: 0.6rem 1rem; border-radius: var(--radius);
+  background: var(--color-primary); color: var(--color-on-primary);
+}
+
+.site-footer { padding: var(--space-2); text-align: center; color: var(--color-muted); }
+
+/* Kids page: big type, bright colours, rounded shapes */
+.kids { padding: var(--space-2); border-radius: 1.25rem; background: #fffaed; color: #3b2a00; font-size: 1.4rem; }
+.kids h1 { font-family: "Comic Sans MS", "Chalkboard SE", sans-serif; color: #e65100; }
+.kids .tip { margin-bottom: var(--space-2); padding: var(--space-2); border: 4px dashed #ff9800; border-radius: 1.25rem; background: #fff; }
+.kids .tip h2 { margin: 0 0 0.3rem; color: #2e7d32; }
+.kids .btn { background: #4caf50; color: #fff; font-size: 1.3rem; border-radius: 1.25rem; }
+@media (prefers-color-scheme: dark) {
+  .kids { background: #2a2110; color: #fff3d6; }
+  .kids h1 { color: #ffb74d; }
+  .kids .tip { background: #3a2e17; }
+  .kids .tip h2 { color: #81c784; }
+}
+
+/* ===== Bottom nav (phones) ===== */
+.main-nav {
+  position: fixed; inset: auto 0 0 0; z-index: 10;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+.main-nav a {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.125rem;
+  min-height: var(--nav-height);
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+.main-nav .icon { font-size: 1.25rem; line-height: 1; }
+.main-nav a[aria-current="page"] {
+  color: var(--color-primary);
+  font-weight: 700;
+  box-shadow: inset 0 0.1875rem 0 var(--color-primary);
+}
+.main-nav a:focus-visible { outline: 3px solid var(--color-primary); outline-offset: -3px; }
+
+/* ===== Tablets: 48rem = 768px, sticky top nav and grid ===== */
+@media (min-width: 48rem) {
+  body { padding-bottom: 0; }
+  .toast { bottom: 1rem; }
+
+  .main-nav { position: sticky; inset: 0 0 auto 0; padding-bottom: 0; border-top: 0; border-bottom: 1px solid var(--color-border); }
+  .main-nav a { flex-direction: row; gap: 0.5rem; min-height: 3.5rem; font-size: 1rem; }
+  .main-nav a[aria-current="page"] { box-shadow: inset 0 -0.1875rem 0 var(--color-primary); }
+
+  .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 64rem) {
+  .card-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ===== Phone turned sideways: nav becomes a left rail (keep LAST) ===== */
+@media (orientation: landscape) and (max-height: 32rem) {
+  body { padding-bottom: 0; padding-left: 5rem; }
+  .toast { bottom: 1rem; }
+  .site-header { padding-block: var(--space-1); }
+  .site-header p { display: none; }
+
+  .main-nav { position: fixed; inset: 0 auto 0 0; width: 5rem; flex-direction: column; padding-bottom: 0; border: 0; border-right: 1px solid var(--color-border); }
+  .main-nav a { flex-direction: column; gap: 0; min-height: 0; font-size: 0.8125rem; }
+  .main-nav a[aria-current="page"] { box-shadow: inset 0.1875rem 0 0 var(--color-primary); }
+}

@@ -1,0 +1,8 @@
+[
+{"id":"hedgehog","name":"Hedgehog","emoji":"🦔","species":"Erinaceus europaeus","status":"Vulnerable","habitat":"Gardens, hedgerows, woodland edges","description":"Hedgehogs roam up to 2 km each night hunting beetles and worms. Leave a gap in your fence so they can travel between gardens.","lat":53.7632,"lng":-2.7031},
+{"id":"red-squirrel","name":"Red Squirrel","emoji":"🐿️","species":"Sciurus vulgaris","status":"Endangered","habitat":"Conifer and mixed woodland","description":"Britain's native squirrel is smaller than the grey and has tufted ears. Fewer than 150,000 remain.","lat":53.7645,"lng":-2.7050},
+{"id":"barn-owl","name":"Barn Owl","emoji":"🦉","species":"Tyto alba","status":"Least Concern","habitat":"Open farmland and grassland","description":"Barn owls hunt silently at dusk over rough grassland. Nest boxes have helped numbers recover.","lat":53.7620,"lng":-2.7070},
+{"id":"otter","name":"Otter","emoji":"🦦","species":"Lutra lutra","status":"Near Threatened","habitat":"Rivers, lakes and wetlands","description":"Otters returned to many English rivers as water quality improved. They can hold their breath for four minutes.","lat":53.7610,"lng":-2.7010},
+{"id":"badger","name":"Badger","emoji":"🦡","species":"Meles meles","status":"Least Concern","habitat":"Woodland and pasture","description":"Badgers live in family groups in underground homes called setts, which can be centuries old.","lat":53.7650,"lng":-2.7020},
+{"id":"kingfisher","name":"Kingfisher","emoji":"🐦","species":"Alcedo atthis","status":"Amber List","habitat":"Slow rivers and streams","description":"A flash of electric blue over the water. Kingfishers dive to catch small fish and nest in riverbanks.","lat":53.7600,"lng":-2.7040}
+]
